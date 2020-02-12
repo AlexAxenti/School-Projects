@@ -21,7 +21,7 @@ fixme_log() {
 }
 
 #File Type Count function
-#Called when arg1 = 2
+#Called when arg2 = 2
 file_count() {
 	counter=0
 	read -p "Enter a file type: " filetype
