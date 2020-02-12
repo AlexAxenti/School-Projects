@@ -5,10 +5,17 @@
 fixme_log() {
 	if [ ! -f fixme.log ] ; then
 		touch fixme.log
+	else
+		rm fixme.log
+		touch fixme.log
 	fi
 
 	for i in $(find . -name "*.txt") ; do
-		echo "$i"
+		for j in $(tail -n 1 "$i") ; do
+			if [ "$j" = "#FIXME" ] ; then
+				echo "$i" >> fixme.log
+			fi
+		done
 	done
 
 
