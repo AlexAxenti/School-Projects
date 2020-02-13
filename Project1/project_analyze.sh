@@ -5,12 +5,11 @@
 # FIXME Log function
 # Called when arg1 = 1
 fixme_log() {
-	if [ ! -f fixme.log ] ; then
-		touch fixme.log
-	else
+	if [ -f fixme.log ] ; then
 		rm fixme.log
-		touch fixme.log
 	fi
+
+	touch fixme.log
 
 	for i in $(find .. -type f -name "*.txt") ; do
 		for j in $(tail -n 1 "$i") ; do
@@ -51,7 +50,6 @@ find_tag() {
 		for j in $(egrep "^#.*$tag.*" "$i") ; do
 			echo "$i" "$j" >> "$tag.log" 
 		done
-		#echo $(egrep "^#.*dog.*" "$i")
 	done
 
 }
