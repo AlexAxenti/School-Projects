@@ -5,11 +5,12 @@
 # FIXME Log function
 # Called when arg1 = 1
 fixme_log() {
-	if [ -f fixme.log ] ; then
+	if [ ! -f fixme.log ] ; then
+		touch fixme.log
+	else
 		rm fixme.log
+		touch fixme.log
 	fi
-
-	touch fixme.log
 
 	for i in $(find .. -type f -name "*.txt") ; do
 		for j in $(tail -n 1 "$i") ; do
@@ -20,6 +21,7 @@ fixme_log() {
 	done
 
 }
+
 
 #File Type Count function
 #Called when arg1 = 2
@@ -63,5 +65,4 @@ elif [ "$1" -eq 2 ] ; then
 elif [ "$1" -eq 3 ] ; then
 	find_tag
 fi
-
 
