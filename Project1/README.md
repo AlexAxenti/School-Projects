@@ -38,3 +38,12 @@ Exectuion: To execute this file, agr1 when calling the script must be '2' as suc
 As well as inputting a correct file type extension when prompted by the script.
 
 ## Feature File Tag
+Description: The user is prompted for a specific word or 'tag'. The script then searches for every py file that has a
+comment which includes the tag on that line The file along with the line is then recorded into a file tag.log
+(named after the inputted tag).
+
+Execution: To execute this file, agr1 when calling the script must by '3' as such:
+
+	./CS1XA3/Project01/project_analyze 3
+
+As well as inputting one word when prompted by the script
