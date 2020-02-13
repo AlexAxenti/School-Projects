@@ -2,12 +2,18 @@
 
 ## Usage
 Execute this script from the project root with:
+
 	chmod +x CS1XA3/Project01/project_analyze.sh
+
 	./CS1XA3/Project1/project_analyze arg1
+
 There is only one required argument with possible inputs 1, 2, or 3.
 List of inputs with corresponding feature:
+
 1 - FIXME Log
+
 2 - File Type Count
+
 3 - Find Tag
 
 ## Feature FIXME Log
