@@ -1,4 +1,4 @@
-# CS 1XA3 PRoject01 - axentia
+# CS 1XA3 Project01 - axentia
 
 ## Usage
 Execute this script from the project root with:
@@ -10,19 +10,31 @@ Execute this script from the project root with:
 There is only one required argument with possible inputs 1, 2, or 3.
 List of inputs with corresponding feature:
 
-1 - FIXME Log
-
-2 - File Type Count
-
-3 - Find Tag
+	1 - FIXME Log
+	
+	2 - File Type Count
+	
+	3 - Find Tag
 
 ## Feature FIXME Log
 Description: This feature will find every file in your repo that contains the word '#FIXME' in its last line.
 These files will then be recorded into a new file (or overwritting the existing file) named fixme.log.
 
-Execution: To execute this file, arg1 when calling the script must be '1'
+Execution: To execute this file, arg1 when calling the script must be '1' as such:
+
 	./CS1XA3/Project01/project_analyze 1
 
 Reference:
 How to find the last line of a file: https://kb.iu.edu/d/acrj 
 
+## Feature File Type Count
+Description: The user is prompted for a file extension (txt, pdf, etc). The script will then output how many files 
+of that type exist in your repo
+
+Exectuion: To execute this file, agr1 when calling the script must be '2' as such:
+
+	./CS1XA3/Project01/project_analyze 2
+
+As well as inputting a correct file type extension when prompted by the script.
+
+## Feature File Tag
