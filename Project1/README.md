@@ -1,11 +1,13 @@
 # CS 1XA3 Project01 - axentia
 
 ## Usage
-Execute this script from the project root with:
+To execute this script, the script must be kept in its 'Project1' folder, as well as the 'Project1' folder to be 
+placed in the root of the repo. Then, the script can be executed with the following commands while in the 
+'Project1' directory:
 
-	chmod +x CS1XA3/Project01/project_analyze.sh
+	chmod +x project_analyze.sh
 
-	./CS1XA3/Project1/project_analyze arg1
+	./project_analyze arg1
 
 There is only one required argument with possible inputs 1, 2, or 3.
 List of inputs with corresponding feature:
@@ -47,6 +49,9 @@ Execution: To execute this file, agr1 when calling the script must by '3' as suc
 	./CS1XA3/Project01/project_analyze 3
 
 As well as inputting one word when prompted by the script
+
+Reference: https://www.computerhope.com/unix/uegrep.htm for how to use egrep and properly format the 'pattern' when 
+searching for the tag.
 
 ## Custom Feature File Synchonization
 Description: This script will compare two files (the user will be prompted for the two file paths) line by line 

@@ -38,7 +38,7 @@ file_count() {
 #Called when arg1 = 3
 find_tag() {
 
-	read -p "Enter a tag to search for: " tag
+	read -p "Enter a single word to search for: " tag
 
 	if [ -f "$tag.log" ] ; then
 		rm "$tag.log"
