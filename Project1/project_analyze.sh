@@ -1,7 +1,5 @@
 #!/bin/bash
 
-#todo check for white space and edge cases and more than one arguments
-
 # FIXME Log function
 # Called when arg1 = 1
 fixme_log() {
@@ -10,8 +8,8 @@ fixme_log() {
 	fi
 
 	touch fixme.log
-
-	for i in $(find .. -type f -name "*.txt") ; do
+	IFS=$'\n'
+	for i in $(find .. -type f -name "*.*") ; do
 		for j in $(tail -n 1 "$i") ; do
 			if [ "$j" = "#FIXME" ] ; then
 				echo "$i" >> fixme.log
@@ -28,6 +26,7 @@ file_count() {
 
 	counter=0
 	read -p "Enter a file type: " filetype
+	IFS=$'\n'
 	for i in $(find .. -name "*.$filetype") ; do
 		counter=$(($counter + 1))
 	done
@@ -45,8 +44,8 @@ find_tag() {
 		rm "$tag.log"
 	fi
 	touch "$tag.log"
+	IFS=$'\n'
 	for i in $(find .. -name "*.py") ; do
-		IFS=$'\n'
 		for j in $(egrep "^#.*$tag.*" "$i") ; do
 			echo "$i" "$j" >> "$tag.log" 
 		done

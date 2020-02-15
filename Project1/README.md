@@ -47,3 +47,19 @@ Execution: To execute this file, agr1 when calling the script must by '3' as suc
 	./CS1XA3/Project01/project_analyze 3
 
 As well as inputting one word when prompted by the script
+
+## Custom Feature File Synchonization
+Description: This script will compare two files (the user will be prompted for the two file paths) line by line 
+and upon discovering a line that is different between the two files, the user will be asked which line they would
+like to keep. After going through each of the lines, a new file will be created composed of all the identical lines,
+as well as the lines that the user specified to keep. There will also be a log created that keeps track of which
+lines were kept or not kept.
+
+Execution: To execute this file, agr1 when calling the script must be '4' as such:
+
+	./CS1XA3/Project01/project_analyze 4
+
+The user will also be prompted for two file paths, and upon discovering unidentical lines, the user will be prompted
+for which line they would like to keep, by inputting '1' or '2'.
+
+##Custom Feature Something
