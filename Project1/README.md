@@ -20,11 +20,11 @@ List of inputs with corresponding feature:
 
 ## Feature FIXME Log
 Description: This feature will find every file in your repo that contains the word '#FIXME' in its last line.
-These files will then be recorded into a new file (or overwritting the existing file) named fixme.log.
+These files will then be recorded into a new file (or overwritting an existing file) named fixme.log.
 
 Execution: To execute this file, arg1 when calling the script must be '1' as such:
 
-	./CS1XA3/Project01/project_analyze 1
+	./project_analyze 1
 
 Reference:
 How to find the last line of a file: https://kb.iu.edu/d/acrj 
@@ -35,7 +35,7 @@ of that type exist in your repo
 
 Exectuion: To execute this file, agr1 when calling the script must be '2' as such:
 
-	./CS1XA3/Project01/project_analyze 2
+	./project_analyze 2
 
 As well as inputting a correct file type extension when prompted by the script.
 
@@ -46,7 +46,7 @@ comment which includes the tag on that line The file along with the line is then
 
 Execution: To execute this file, agr1 when calling the script must by '3' as such:
 
-	./CS1XA3/Project01/project_analyze 3
+	./project_analyze 3
 
 As well as inputting one word when prompted by the script
 
@@ -62,9 +62,20 @@ lines were kept or not kept.
 
 Execution: To execute this file, agr1 when calling the script must be '4' as such:
 
-	./CS1XA3/Project01/project_analyze 4
+	./project_analyze 4
 
 The user will also be prompted for two file paths, and upon discovering unidentical lines, the user will be prompted
-for which line they would like to keep, by inputting '1' or '2'.
+for which one of the two lines they want to keep, for which they must input '1' or '2'.
 
-##Custom Feature Something
+## Custom Feature Last Backup Date
+Description: This script searches for all files/directories with the word 'backup' in the name. For every file found, 
+the date of creation and last date modified will be displayed (while also being recorded into a log file to keep 
+track of how up to date all of your backups are) as well as prompting the user if they would like to create a new
+backup of that file/directory (given that the original name is the same just without 'backup')
+
+Execution: To execute this file, arg1 when calling the script must be '5' as such:
+
+	./project_analyze 5
+
+The user will also be prompted for every file/directory found if they would like to create a new backup, for which
+they must input 'y' or 'n'.
