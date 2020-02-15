@@ -34,7 +34,7 @@ These files will then be recorded into a new file (or overwritting an existing f
 
 ## Feature File Type Count
 **Description:** The user is prompted for a file extension (txt, pdf, etc). The script will then output how many files 
-of that type exist in your repo
+of that type exist in your repo.
 
 **Exectuion:** To execute this file, agr1 when calling the script must be '2' as such:
 
@@ -43,15 +43,15 @@ of that type exist in your repo
 As well as inputting a correct file type extension when prompted by the script.
 
 ## Feature File Tag
-**Description:** The user is prompted for a specific word or 'tag'. The script then searches for every py file that has a
-comment which includes the tag on that line The file along with the line is then recorded into a file tag.log
-(named after the inputted tag).
+**Description:** The user is prompted for a single specific word or 'tag'. The script then searches for every python
+ file that has a line which begins with a comment which includes the tag on that line. The file along with 
+the line is then recorded into a file tag.log (named after the inputted tag).
 
 **Execution:** To execute this file, agr1 when calling the script must by '3' as such:
 
 	./project_analyze 3
 
-As well as inputting one word when prompted by the script
+As well as inputting one word when prompted by the script.
 
 **Reference:** https://www.computerhope.com/unix/uegrep.htm for how to use egrep and properly format the 'pattern' when 
 searching for the tag.
