@@ -22,6 +22,8 @@ There is only one required argument with possible inputs 1, 2, 3, 4 or 5.
 
 	5 - Last Backup Date
 
+**References:** https://linuxize.com/post/bash-functions/ how to use functions in bash to make file look cleaner.
+
 ## Feature FIXME Log
 **Description:** This feature will find every file in your repo that contains the word '#FIXME' in its last line.
 These files will then be recorded into a new file (or overwritting an existing file) named fixme.log.
