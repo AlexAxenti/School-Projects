@@ -53,6 +53,8 @@ find_tag() {
 
 }
 
+#Switch to Executable feature
+#Called when arg1 = 6
 switch_perms() {
 
 	response="nothing"
@@ -99,7 +101,7 @@ switch_perms() {
 			IFS=$'\n'
 			for i in $(cat permissions.log) ; do
 				#resource https://superuser.com/questions/1001973/bash-find-string-index-position-of-substring
-				original=$i
+				original="$i"
 				index=".."
 				path="${original#*$index}"
 				path="$index$path"
@@ -149,6 +151,49 @@ switch_perms() {
 	fi
 }
 
+#Backup and Delete / Restore feature
+#Called when arg1 = 7
+backup_restore() {
+
+	response="nothing"
+
+	while [ $response != 'b' ] && [ $response != 'r' ] && [ $response != 'q' ] ; do
+		read -p "Would you like to backup(b) or restore(r) files? Enter exactly 'b' or 'r', or 'q' to quit the script: " response
+	done
+
+	if [ $response = 'b' ] ; then
+		if [ -d backup ] ; then
+			rm -r backup
+		fi
+		mkdir backup
+		if [ ! -f ./backup/restore.log ] ; then
+			touch ./backup/restore.log
+		fi
+		for i in $(find .. -name "*.tmp") ; do
+			echo "$i" >> ./backup/restore.log
+			mv "$i" ./backup
+		done
+	elif [ $response = 'r' ] ; then
+		for i in backup/* ; do
+			echo "$i"
+			original="$i"
+			index="backup/"
+			filename="${original#*$index}"
+			path="nothing"
+			for j in $(grep "$filename" backup/restore.log) ; do 
+				if [ "${j#*$filename}" = "" ] ; then
+					path="$j"
+				fi
+			done
+			echo "$path"
+			if [ "$i" != "backup/restore.log" ] && [ -f "$i" ] ; then
+				mv "$i" "$path"
+			fi
+		done
+	fi
+
+}
+
 #Script Input
 #Args 1-3 call a specified function
 if [ "$1" -eq 1 ] ; then
@@ -159,5 +204,7 @@ elif [ "$1" -eq 3 ] ; then
 	find_tag
 elif [ "$1" -eq 6 ] ; then
 	switch_perms
+elif [ "$1" -eq 7 ] ; then
+	backup_restore
 fi
 
