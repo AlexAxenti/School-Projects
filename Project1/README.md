@@ -73,8 +73,8 @@ The user will also be prompted for two file paths, and upon discovering unidenti
 for which one of the two lines they want to keep, for which they must input '1' or '2'.
 
 ## Custom Feature Last Backup Date
-**Description:** This script searches for all files/directories with the word 'backup' in the name. For every file found, 
-the date of creation and last date modified will be displayed (while also being recorded into a log file to keep 
+**Description:** This script searches for all files/directories with the word 'backup' at the end of the name. For every file found, 
+the last date modified will be displayed (while also being recorded into a log file to keep 
 track of how up to date all of your backups are) as well as prompting the user if they would like to create a new
 backup of that file/directory (given that the original name is the same just without 'backup')
 

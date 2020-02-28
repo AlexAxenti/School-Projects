@@ -53,6 +53,37 @@ find_tag() {
 
 }
 
+last_backup(){
+
+	if [ -f backups.log ] ; then
+		rm backups.log
+	fi
+	touch backups.log
+
+	response="nothing"
+
+	for i in $(find .. -name "*backup.*") ; do
+		echo $(stat -c %y "$i") 'for' "$i"
+		echo $(stat -c %y "$i") 'for' "$i" >> backups.log
+		read -p "Would you like to create a new backup of $i? Enter 'y' or 'n':" response
+		if [ $response = 'y' ] ; then
+			#resourcehttps://stackoverflow.com/questions/19482123/extract-part-of-a-string-using-bash-cut-split 
+			search="backup"
+			extension=${i#*$search}
+			extensionlength=${#extension}
+			ilength=${#i}
+			cutlength=$(($ilength - $extensionlength - 6))
+			name=${i:0:$cutlength}$extension
+			name=${name##*/}
+			echo "$name"
+			newfile=$(find .. -name "$name")
+			echo "$newfile"
+			cp -f "$newfile" "$i"
+		fi
+	done
+
+}
+
 #Switch to Executable feature
 #Called when arg1 = 6
 switch_perms() {
@@ -202,6 +233,8 @@ elif [ "$1" -eq 2 ] ; then
 	file_count
 elif [ "$1" -eq 3 ] ; then
 	find_tag
+elif [ "$1" -eq 5 ] ; then
+	last_backup
 elif [ "$1" -eq 6 ] ; then
 	switch_perms
 elif [ "$1" -eq 7 ] ; then
