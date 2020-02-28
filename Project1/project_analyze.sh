@@ -1,4 +1,4 @@
- #!/bin/bash
+#!/bin/bash
 
 # FIXME Log function
 # Called when arg1 = 1
@@ -55,9 +55,6 @@ find_tag() {
 
 switch_perms() {
 
-	if [ ! -f permissions.log ] ; then
-		touch permissions.log
-	fi
 	response="nothing"
 
 	while [ $response != 'c' ] && [ $response != 'r' ] && [ $response != 'q' ] ; do
@@ -66,6 +63,37 @@ switch_perms() {
 
 	if [ $response = 'q' ] ; then
 		echo "Exiting script"
+	elif [ $response = 'c' ] ; then
+		if [ -f permissions.log ] ; then
+			rm permissions.log
+		fi
+		touch permissions.log
+
+		IFS=$'\n'
+		for i in $(find .. -name "*.sh") ; do
+			counter=0
+			echo $(ls -l "$i") >> permissions.log
+			#resource https://stackoverflow.com/questions/10551981/how-to-perform-a-for-loop-on-each-character-in-a-string-in-bash
+			perm=$(echo $(ls -l "$i"))
+			for (( j=0; j<10; j++ )) ; do
+				counter=$(($counter + 1))
+				letter=${perm:$counter:1}
+				echo $letter
+				if [ $counter -eq 1 ] ; then
+					if [ $letter = "r" ] ; then
+						chmod u+x "$i"
+					fi
+				elif [ $counter -eq 4 ] ; then
+					if [ $letter = "r" ] ; then
+						chmod g+x "$i"
+					fi
+				elif [ $counter -eq 7 ] ; then
+					if [ $letter = "r" ] ; then
+						chmod o+x "$i"
+					fi
+				fi
+			done
+		done
 	fi
 }
 
