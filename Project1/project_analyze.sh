@@ -53,6 +53,8 @@ find_tag() {
 
 }
 
+#Custom Feature Last Backup Date
+#Called when arg1 = 5
 last_backup(){
 
 	if [ -f backups.log ] ; then
@@ -93,9 +95,10 @@ last_backup(){
 			cutlength=$(($ilength-6))
 			name=${i:0:$cutlength}
 			name=${name##*/}
-			echo "$name"
-			newdir=$(find .. -type d -name "$name"
+			newdir=$(find .. -type d -name "$name")
+			echo "$i"
 			echo "$newdir"
+			cp -Tr "$newdir" "$i"
 		fi
 	done
 
