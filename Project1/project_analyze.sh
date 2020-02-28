@@ -47,7 +47,7 @@ find_tag() {
 	IFS=$'\n'
 	for i in $(find .. -name "*.py") ; do
 		for j in $(egrep "^#.*$tag.*" "$i") ; do
-			echo "$i" "$j" >> "$tag.log" 
+			echo "$i" "$j" >> "$tag.log"
 		done
 	done
 
@@ -94,6 +94,58 @@ switch_perms() {
 				fi
 			done
 		done
+	elif [ $response = 'r' ] ; then
+		if [ -f permissions.log ] ; then
+			IFS=$'\n'
+			for i in $(cat permissions.log) ; do
+				#resource https://superuser.com/questions/1001973/bash-find-string-index-position-of-substring
+				original=$i
+				index=".."
+				path="${original#*$index}"
+				path="$index$path"
+				perms=${original:1:10}
+				echo $perms
+				echo $path
+				perm1=0
+				perm2=0
+				perm3=0
+				for (( j=0; j<9; j++)) ; do
+					letter=${perms:$j:1}
+					if [ $j -lt 3 ] ; then
+						echo $j$letter
+						if [ $letter = 'r' ] ; then
+							perm1=$(($perm1 + 4))
+						elif [ $letter = 'w' ] ; then
+							perm1=$(($perm1 + 2))
+						elif [ $letter = 'x' ] ; then
+							perm1=$(($perm1 + 1))
+						fi
+					elif [ $j -lt 6 ] ; then
+						echo $j$letter
+						if [ $letter = 'r' ] ; then
+							perm2=$(($perm2 + 4))
+						elif [ $letter = 'w' ] ; then
+							perm2=$(($perm2 + 2))
+						elif [ $letter = 'x' ] ; then
+							perm2=$(($perm2 + 1))
+						fi
+					else
+						echo $j$letter
+						if [ $letter = 'r' ] ; then
+							perm3=$(($perm3 + 4))
+						elif [ $letter = 'w' ] ; then
+							perm3=$(($perm3 + 2))
+						elif [ $letter = 'x' ] ; then
+							perm3=$(($perm3 + 1))
+						fi
+					fi
+				done
+				echo $perm1$perm2$perm3
+				chmod $perm1$perm2$perm3 "$path"
+			done
+		else
+			echo "All files are already at default permissions"
+		fi
 	fi
 }
 
