@@ -62,10 +62,11 @@ last_backup(){
 
 	response="nothing"
 
+	#This for loop goes through files
 	for i in $(find .. -name "*backup.*") ; do
 		echo $(stat -c %y "$i") 'for' "$i"
 		echo $(stat -c %y "$i") 'for' "$i" >> backups.log
-		read -p "Would you like to create a new backup of $i? Enter 'y' or 'n':" response
+		read -p "Would you like to create a new backup of $i? Enter 'y' or 'n': " response
 		if [ $response = 'y' ] ; then
 			#resourcehttps://stackoverflow.com/questions/19482123/extract-part-of-a-string-using-bash-cut-split 
 			search="backup"
@@ -79,6 +80,22 @@ last_backup(){
 			newfile=$(find .. -name "$name")
 			echo "$newfile"
 			cp -f "$newfile" "$i"
+		fi
+	done
+
+	#This for loop goes through directories
+	for i in $(find .. -type d -name "*backup") ; do
+		echo $(stat -c %y "$i") 'for' "$i"
+		echo $(stat -c %y "$i") 'for' "$i" >> backups.log
+		read -p "Would you like to create a new backup of $i? Enter 'y' or 'n': " response
+		if [ $response = 'y' ] ; then
+			ilength=${#i}
+			cutlength=$(($ilength-6))
+			name=${i:0:$cutlength}
+			name=${name##*/}
+			echo "$name"
+			newdir=$(find .. -type d -name "$name"
+			echo "$newdir"
 		fi
 	done
 
