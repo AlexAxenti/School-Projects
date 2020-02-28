@@ -84,3 +84,27 @@ backup of that file/directory (given that the original name is the same just wit
 
 The user will also be prompted for every file/directory found if they would like to create a new backup, for which
 they must input 'y' or 'n'.
+
+## Feature Switch to Executable 
+**Description:** This feature has two options, "change" or "restore". The user will be prompted for which option upon 
+execution. The "change" option will change the permissions of all .sh files so that only people who have write
+permissions can have executable permissions. Original permissions are then stored in permissions.log The "restore" 
+option will restore the permissions of all .sh files to the permissions stored in the permissions log file.
+
+**Execution:** To execute this file, arg1 when calling the script must be '6' as such:
+
+	./project_analyze 6
+
+The user will also be prompted to enter 'c' for change, 'r' for restore, or 'q' if they want to quit without
+altering any permissions.
+
+## Feature Backup and Delete / Restore
+**Description:** This feature has two options, "backup" or "restore". The user will be prompted for which option upon execution.
+The "backup" option will move all .tmp files into a directory /backup while storing original locations in /backup/restore.log.
+The "restore" option will move all files from the /backup directory to their orginal locations.
+
+**Execution:** To execute this file, arg1 when calling the script must be '7' as such:
+
+	./project_analyze 7
+
+The user will also be prompted to enter 'b' for backup, 'r' for restore, or 'q' if they want to quit without moving any files.
