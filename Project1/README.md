@@ -69,17 +69,25 @@ lines were kept or not kept.
 
 	./project_analyze 4
 
-The user will also be prompted for two file paths, and upon discovering unidentical lines, the user will be prompted
-for which one of the two lines they want to keep, for which they must input '1' or '2'.
+The user will also be prompted for two files, which must both be in the Project1 directory, and
+ upon discovering unidentical lines, the user will be prompted for which one of the two 
+lines they want to keep, for which they must input '1' or '2'.
+
+**Note:** When inputting the file paths, do not place quotations around the files, even if there is spaces. If there
+are spaces, the files will still work even without quotes. 
+Also, the script will only run through the number of lines contained in the smaller file. Excess lines in the other
+file are then skipped.
 
 **Reference:** https://www.geeksforgeeks.org/write-bash-script-print-particular-line-file/ Learned how to use sed
 to print a specific line (by number) from a file.
+Also, https://askubuntu.com/questions/442914/calculating-the-number-of-lines-in-a-file a command that returns the
+number of lines in a file, including empty lines.
 
 ## Custom Feature Last Backup Date
 **Description:** This script searches for all files/directories with the word 'backup' at the end of the name. For every file/directory found, 
 the last date modified will be displayed (while also being recorded into a log file to keep 
 track of how up to date all of your backups are) as well as prompting the user if they would like to create a new
-backup of that file/directory (given that the original name is the same just without 'backup')
+backup of that file/directory (given that the original name is the same just without 'backup').
 
 **Execution:** To execute this file, arg1 when calling the script must be '5' as such:
 
@@ -90,7 +98,7 @@ they must input 'y' or 'n'.
 
 **Reference:** https://stackoverflow.com/questions/19482123/extract-part-of-a-string-using-bash-cut-split learned
 how to use parameter expansion to extract parts of string such as extracting the file extension from the string, and
-extracting everything after the last '/'
+extracting everything after the last '/'.
 
 ## Feature Switch to Executable 
 **Description:** This feature has two options, "change" or "restore". The user will be prompted for which option upon 

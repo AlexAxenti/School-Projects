@@ -65,17 +65,14 @@ file_sync(){
 	smallerlength=0
 	otherlength=0
 
-	for i in $(cat "$file1") ; do
-		smallerlength=$((smallerlength + 1))
-	done
+	smallerlength=$(wc -l "$file1")
+	smallerlength=${smallerlength:0:1}
+	otherlength=$(wc -l "$file2")
+	otherlength=${otherlength:0:1}
 
-	for i in $(cat "$file2") ; do
-		otherlength=$((otherlength + 1))
-	done
 	if [ $otherlength -lt $smallerlength ] ; then
 		smallerlength=$otherlength
 	fi
-	echo $smallerlength
 
 	if [ -f "$file1""$file2"sync ] ; then
 		rm "$file1""$file2"sync
@@ -128,7 +125,6 @@ last_backup(){
 		echo $(stat -c %y "$i") 'for' "$i" >> backups.log
 		read -p "Would you like to create a new backup of $i? Enter 'y' or 'n': " response
 		if [ $response = 'y' ] ; then
-			#resourcehttps://stackoverflow.com/questions/19482123/extract-part-of-a-string-using-bash-cut-split 
 			search="backup"
 			extension=${i#*$search}
 			extensionlength=${#extension}
@@ -184,7 +180,6 @@ switch_perms() {
 		for i in $(find .. -name "*.sh") ; do
 			counter=0
 			echo $(ls -l "$i") >> permissions.log
-			#resource https://stackoverflow.com/questions/10551981/how-to-perform-a-for-loop-on-each-character-in-a-string-in-bash
 			perm=$(echo $(ls -l "$i"))
 			for (( j=0; j<10; j++ )) ; do
 				counter=$(($counter + 1))
@@ -215,7 +210,6 @@ switch_perms() {
 		if [ -f permissions.log ] ; then
 			IFS=$'\n'
 			for i in $(cat permissions.log) ; do
-				#resource https://superuser.com/questions/1001973/bash-find-string-index-position-of-substring
 				original="$i"
 				index=".."
 				path="${original#*$index}"
