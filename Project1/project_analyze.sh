@@ -65,21 +65,50 @@ file_sync(){
 	smallerlength=0
 	otherlength=0
 
-	echo $file1
-	echo $file2
 	for i in $(cat "$file1") ; do
 		smallerlength=$((smallerlength + 1))
-		echo file1 "$i"
 	done
 
 	for i in $(cat "$file2") ; do
 		otherlength=$((otherlength + 1))
-		echo file2 "$i"
 	done
 	if [ $otherlength -lt $smallerlength ] ; then
 		smallerlength=$otherlength
 	fi
-	echo $smallerlength
+
+
+	if [ -f "$file1""$file2"sync ] ; then
+		rm "$file1""$file2"sync
+	fi
+	if [ -f "$file1""$file2"changes ] ; then
+		rm "$file1""$file2"changes
+	fi
+	touch "$file1""$file2"sync
+	touch "$file1""$file2"changes
+	response="nothing"
+	for (( i = 1 ; i < $(($smallerlength + 1)) ; i++ )) ; do
+		response="nothing"
+		line1=$(sed -n "$i"p "$file1")
+		line2=$(sed -n "$i"p "$file2")
+		echo 1. "$file1" "$line1"
+		echo 2. "$file2" "$line2"
+		if [ "$line1" != "$line2" ] ; then
+			while [ $response != '1' ] && [ $response != '2' ] ; do
+				read -p "Which line would you like to keep, enter exactly '1' or '2' according to above labelling: " response
+			done
+			if [ $response -eq '1' ] ; then
+				echo "$line1" >> "$file1""$file2"sync
+				echo line "$i" kept from "$file1" >> "$file1""$file2"changes
+			elif [ $response -eq '2' ] ; then
+				echo "$line2" >> "$file1""$file2"sync
+				echo line "$i" kept from "$file2" >> "$file1""$file2"changes
+			fi
+		else
+			echo "$line1" >> "$file1""$file2"sync
+			echo line "$i" is identical >> "$file1""$file2"changes
+			echo lines are identical
+		fi
+	done
 }
 
 #Custom Feature Last Backup Date
@@ -240,6 +269,7 @@ backup_restore() {
 	while [ $response != 'b' ] && [ $response != 'r' ] && [ $response != 'q' ] ; do
 		read -p "Would you like to backup(b) or restore(r) files? Enter exactly 'b' or 'r', or 'q' to quit the script: " response
 	done
+	IFS=$'\n'
 
 	if [ $response = 'b' ] ; then
 		if [ -d backup ] ; then
