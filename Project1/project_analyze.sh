@@ -53,6 +53,35 @@ find_tag() {
 
 }
 
+#Custom Feature File Synchronization
+#Called when arg1 = 4
+file_sync(){
+
+	echo "While inputting file paths, keep in mind the script executes from inside the Project1 folder"
+	read -p "Enter the path of the first file: " file1
+	read -p "Enter the path of the second file: " file2
+
+	IFS=$'\n'
+	smallerlength=0
+	otherlength=0
+
+	echo $file1
+	echo $file2
+	for i in $(cat "$file1") ; do
+		smallerlength=$((smallerlength + 1))
+		echo file1 "$i"
+	done
+
+	for i in $(cat "$file2") ; do
+		otherlength=$((otherlength + 1))
+		echo file2 "$i"
+	done
+	if [ $otherlength -lt $smallerlength ] ; then
+		smallerlength=$otherlength
+	fi
+	echo $smallerlength
+}
+
 #Custom Feature Last Backup Date
 #Called when arg1 = 5
 last_backup(){
@@ -253,6 +282,8 @@ elif [ "$1" -eq 2 ] ; then
 	file_count
 elif [ "$1" -eq 3 ] ; then
 	find_tag
+elif [ "$1" -eq 4 ] ; then
+	file_sync 
 elif [ "$1" -eq 5 ] ; then
 	last_backup
 elif [ "$1" -eq 6 ] ; then

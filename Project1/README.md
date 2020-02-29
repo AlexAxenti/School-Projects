@@ -58,7 +58,7 @@ As well as inputting one word when prompted by the script.
 **Reference:** https://www.computerhope.com/unix/uegrep.htm for how to use egrep and properly format the 'pattern' when 
 searching for the tag.
 
-## Custom Feature File Synchonization
+## Custom Feature File Synchronization
 **Description:** This script will compare two files (the user will be prompted for the two file paths) line by line 
 and upon discovering a line that is different between the two files, the user will be asked which line they would
 like to keep. After going through each of the lines, a new file will be created composed of all the identical lines,
