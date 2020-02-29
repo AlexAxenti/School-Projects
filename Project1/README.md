@@ -9,7 +9,7 @@ placed in the root of the repo. Then, the script can be executed with the follow
 
 	./project_analyze arg1
 
-There is only one required argument with possible inputs 1, 2, 3, 4 or 5.
+There is only one required argument with possible inputs 1, 2, 3, 4, 5, 6 or 7.
 **List of inputs** with corresponding feature:
 
 	1 - FIXME Log
@@ -21,6 +21,10 @@ There is only one required argument with possible inputs 1, 2, 3, 4 or 5.
 	4 - File Synchronization
 
 	5 - Last Backup Date
+
+	6 - Switch to Executable
+
+	7 - Backup and Delete / Restore
 
 **References:** https://linuxize.com/post/bash-functions/ how to use functions in bash to make file look cleaner.
 
@@ -73,14 +77,15 @@ The user will also be prompted for two files, which must both be in the Project1
  upon discovering unidentical lines, the user will be prompted for which one of the two 
 lines they want to keep, for which they must input '1' or '2'.
 
-**Note:** When inputting the file paths, do not place quotations around the files, even if there is spaces. If there
+**Note:** When inputting the file names, do not place quotations around the name, even if there are spaces. If there
 are spaces, the files will still work even without quotes. 
 Also, the script will only run through the number of lines contained in the smaller file. Excess lines in the other
 file are then skipped.
 
 **Reference:** https://www.geeksforgeeks.org/write-bash-script-print-particular-line-file/ Learned how to use sed
 to print a specific line (by number) from a file.
-Also, https://askubuntu.com/questions/442914/calculating-the-number-of-lines-in-a-file a command that returns the
+
+https://askubuntu.com/questions/442914/calculating-the-number-of-lines-in-a-file a command that returns the
 number of lines in a file, including empty lines.
 
 ## Custom Feature Last Backup Date
@@ -114,7 +119,7 @@ The user will also be prompted to enter 'c' for change, 'r' for restore, or 'q' 
 altering any permissions.
 
 **Reference:** https://stackoverflow.com/questions/10551981/how-to-perform-a-for-loop-on-each-character-in-a-string-in-bash
-used to go through permissions letter by letter to find who has read permissions.
+used to go through a string letter by letter to find who has read permissions.
 
 https://superuser.com/questions/1001973/bash-find-string-index-position-of-substring another reference used for extracting
 string. Used to extract the file path from the string that includes both permissions and file path. 
