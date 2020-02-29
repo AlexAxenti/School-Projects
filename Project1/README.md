@@ -85,6 +85,10 @@ backup of that file/directory (given that the original name is the same just wit
 The user will also be prompted for every file/directory found if they would like to create a new backup, for which
 they must input 'y' or 'n'.
 
+**Reference:** https://stackoverflow.com/questions/19482123/extract-part-of-a-string-using-bash-cut-split learned
+how to use parameter expansion to extract parts of string such as extracting the file extension from the string, and
+extracting everything after the last '/'
+
 ## Feature Switch to Executable 
 **Description:** This feature has two options, "change" or "restore". The user will be prompted for which option upon 
 execution. The "change" option will change the permissions of all .sh files so that only people who have write
@@ -97,6 +101,12 @@ option will restore the permissions of all .sh files to the permissions stored i
 
 The user will also be prompted to enter 'c' for change, 'r' for restore, or 'q' if they want to quit without
 altering any permissions.
+
+**Reference:** https://stackoverflow.com/questions/10551981/how-to-perform-a-for-loop-on-each-character-in-a-string-in-bash
+used to go through permissions letter by letter to find who has read permissions.
+
+https://superuser.com/questions/1001973/bash-find-string-index-position-of-substring another reference used for extracting
+string. Used to extract the file path from the string that includes both permissions and file path. 
 
 ## Feature Backup and Delete / Restore
 **Description:** This feature has two options, "backup" or "restore". The user will be prompted for which option upon execution.

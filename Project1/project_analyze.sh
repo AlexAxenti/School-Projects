@@ -124,7 +124,7 @@ last_backup(){
 
 	#This for loop goes through files
 	for i in $(find .. -name "*backup.*") ; do
-		echo $(stat -c %y "$i") 'for' "$i"
+		#echo $(stat -c %y "$i") 'for' "$i"
 		echo $(stat -c %y "$i") 'for' "$i" >> backups.log
 		read -p "Would you like to create a new backup of $i? Enter 'y' or 'n': " response
 		if [ $response = 'y' ] ; then
@@ -136,16 +136,16 @@ last_backup(){
 			cutlength=$(($ilength - $extensionlength - 6))
 			name=${i:0:$cutlength}$extension
 			name=${name##*/}
-			echo "$name"
+			#echo "$name"
 			newfile=$(find .. -name "$name")
-			echo "$newfile"
+			#echo "$newfile"
 			cp -f "$newfile" "$i"
 		fi
 	done
 
 	#This for loop goes through directories
 	for i in $(find .. -type d -name "*backup") ; do
-		echo $(stat -c %y "$i") 'for' "$i"
+		#echo $(stat -c %y "$i") 'for' "$i"
 		echo $(stat -c %y "$i") 'for' "$i" >> backups.log
 		read -p "Would you like to create a new backup of $i? Enter 'y' or 'n': " response
 		if [ $response = 'y' ] ; then
@@ -154,8 +154,8 @@ last_backup(){
 			name=${i:0:$cutlength}
 			name=${name##*/}
 			newdir=$(find .. -type d -name "$name")
-			echo "$i"
-			echo "$newdir"
+			#echo "$i"
+			#echo "$newdir"
 			cp -Tr "$newdir" "$i"
 		fi
 	done
@@ -189,7 +189,7 @@ switch_perms() {
 			for (( j=0; j<10; j++ )) ; do
 				counter=$(($counter + 1))
 				letter=${perm:$counter:1}
-				echo $letter
+				#echo $letter
 				if [ $counter -eq 1 ] ; then
 					if [ $letter = "r" ] ; then
 						chmod u+x "$i"
@@ -215,15 +215,15 @@ switch_perms() {
 				path="${original#*$index}"
 				path="$index$path"
 				perms=${original:1:10}
-				echo $perms
-				echo $path
+				#echo $perms
+				#echo $path
 				perm1=0
 				perm2=0
 				perm3=0
 				for (( j=0; j<9; j++)) ; do
 					letter=${perms:$j:1}
 					if [ $j -lt 3 ] ; then
-						echo $j$letter
+						#echo $j$letter
 						if [ $letter = 'r' ] ; then
 							perm1=$(($perm1 + 4))
 						elif [ $letter = 'w' ] ; then
@@ -232,7 +232,7 @@ switch_perms() {
 							perm1=$(($perm1 + 1))
 						fi
 					elif [ $j -lt 6 ] ; then
-						echo $j$letter
+						#echo $j$letter
 						if [ $letter = 'r' ] ; then
 							perm2=$(($perm2 + 4))
 						elif [ $letter = 'w' ] ; then
@@ -241,7 +241,7 @@ switch_perms() {
 							perm2=$(($perm2 + 1))
 						fi
 					else
-						echo $j$letter
+						#echo $j$letter
 						if [ $letter = 'r' ] ; then
 							perm3=$(($perm3 + 4))
 						elif [ $letter = 'w' ] ; then
@@ -251,7 +251,7 @@ switch_perms() {
 						fi
 					fi
 				done
-				echo $perm1$perm2$perm3
+				#echo $perm1$perm2$perm3
 				chmod $perm1$perm2$perm3 "$path"
 			done
 		else
@@ -285,7 +285,7 @@ backup_restore() {
 		done
 	elif [ $response = 'r' ] ; then
 		for i in backup/* ; do
-			echo "$i"
+			#echo "$i"
 			original="$i"
 			index="backup/"
 			filename="${original#*$index}"
@@ -295,7 +295,7 @@ backup_restore() {
 					path="$j"
 				fi
 			done
-			echo "$path"
+			#echo "$path"
 			if [ "$i" != "backup/restore.log" ] && [ -f "$i" ] ; then
 				mv "$i" "$path"
 			fi
