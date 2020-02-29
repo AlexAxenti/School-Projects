@@ -75,7 +75,7 @@ file_sync(){
 	if [ $otherlength -lt $smallerlength ] ; then
 		smallerlength=$otherlength
 	fi
-
+	echo $smallerlength
 
 	if [ -f "$file1""$file2"sync ] ; then
 		rm "$file1""$file2"sync
@@ -121,7 +121,7 @@ last_backup(){
 	touch backups.log
 
 	response="nothing"
-
+	IFS=$'\n'
 	#This for loop goes through files
 	for i in $(find .. -name "*backup.*") ; do
 		#echo $(stat -c %y "$i") 'for' "$i"
@@ -135,7 +135,7 @@ last_backup(){
 			ilength=${#i}
 			cutlength=$(($ilength - $extensionlength - 6))
 			name=${i:0:$cutlength}$extension
-			name=${name##*/}
+			name="${name##*/}"
 			#echo "$name"
 			newfile=$(find .. -name "$name")
 			#echo "$newfile"
@@ -152,7 +152,7 @@ last_backup(){
 			ilength=${#i}
 			cutlength=$(($ilength-6))
 			name=${i:0:$cutlength}
-			name=${name##*/}
+			name="${name##*/}"
 			newdir=$(find .. -type d -name "$name")
 			#echo "$i"
 			#echo "$newdir"
@@ -193,14 +193,20 @@ switch_perms() {
 				if [ $counter -eq 1 ] ; then
 					if [ $letter = "r" ] ; then
 						chmod u+x "$i"
+					elif [ $letter = '-' ] ; then
+						chmod u-x "$i"
 					fi
 				elif [ $counter -eq 4 ] ; then
 					if [ $letter = "r" ] ; then
 						chmod g+x "$i"
+					elif [ $letter = '-' ] ; then
+						chmod g-x "$i"
 					fi
 				elif [ $counter -eq 7 ] ; then
 					if [ $letter = "r" ] ; then
 						chmod o+x "$i"
+					elif [ $letter = '-' ] ;then
+						chmod o-x "$i"
 					fi
 				fi
 			done
@@ -313,7 +319,7 @@ elif [ "$1" -eq 2 ] ; then
 elif [ "$1" -eq 3 ] ; then
 	find_tag
 elif [ "$1" -eq 4 ] ; then
-	file_sync 
+	file_sync
 elif [ "$1" -eq 5 ] ; then
 	last_backup
 elif [ "$1" -eq 6 ] ; then

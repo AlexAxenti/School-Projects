@@ -72,6 +72,9 @@ lines were kept or not kept.
 The user will also be prompted for two file paths, and upon discovering unidentical lines, the user will be prompted
 for which one of the two lines they want to keep, for which they must input '1' or '2'.
 
+**Reference:** https://www.geeksforgeeks.org/write-bash-script-print-particular-line-file/ Learned how to use sed
+to print a specific line (by number) from a file.
+
 ## Custom Feature Last Backup Date
 **Description:** This script searches for all files/directories with the word 'backup' at the end of the name. For every file/directory found, 
 the last date modified will be displayed (while also being recorded into a log file to keep 
