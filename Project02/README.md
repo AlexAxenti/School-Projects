@@ -1,7 +1,7 @@
 # CS 1XA3 Project02 - axentia
 
 
-##Overview
+## Overview
 
 This webpage is Alex Axenti's custom CV. My CV contains my skills, qualifications, jobs etc. as any other resume would, as well as 
 pictures and description of side projects that I have worked on before. The design of the CV is based on a free template, and the
@@ -58,5 +58,5 @@ https://html5up.net/read-only
 - A link I used regarding queueing and stopping animations
 https://css-tricks.com/examples/jQueryStop/
 
-- As mentioned in the overview, main_marked.js is the only javascript file which I have coded. All other javascript files came
+- As mentioned in the overview, assets/js/main_marked.js is the only javascript file which I have coded. All other javascript files came
 with the template and have not been modified by me at all.
