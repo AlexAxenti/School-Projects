@@ -19,14 +19,14 @@ features which I have programmed.
 javascript function detects which category was clicked, and changes the text of the paragraph above to a new text that is 
 relevant to the category selected.
 
-The code for this feature can be found on lines 103 - 147
+The code for this feature can be found on lines 103 - 147.
 
 ### Information and Skills Highlight
 
 **Description:** When hovering over one of the 6 categories mentioned above, this feature changes the highlight color of the hovered
 category so it is clear as to which category is being selected, as well as for nice design.
 
-The code for this feature can be found on lines 5 - 16
+The code for this feature can be found on lines 5 - 16.
 
 ### Image Change on Click
 
@@ -34,13 +34,13 @@ The code for this feature can be found on lines 5 - 16
 This feature detecs when an image has been clicked on, and it changes the image to a new image of the same project, to give viewers
 a better idea of the project I am describing. The images cycle through a loop.
 
-The code for this feature can be found on lines 45 to 100
+The code for this feature can be found on lines 45 to 100.
 
 ### Navigator Highlighter
 
 **Description:** This feature simply boldens and enlarges the text that is being hovered on the navigator.
 
-The code for this feature can be found on lines 19 to 30
+The code for this feature can be found on lines 19 to 30.
 
 ### Footer Icon Animations
 
@@ -48,7 +48,7 @@ The code for this feature can be found on lines 19 to 30
 an animation causes the icon to swell up to indicate that it senses the hover, as well as for some cool design. Upon moving the
  mouse away from the icon, an animations causes the icon to shrink back to its original size.
 
-The code for this feature can be found on lines 33 to 42
+The code for this feature can be found on lines 33 to 42.
 
 ## References
 
