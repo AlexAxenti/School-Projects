@@ -1,0 +1,61 @@
+{% extends 'social_base.djhtml' %}
+
+{% block title %}Personal Page{% endblock %}
+
+{% block middle_column %}
+      <div class="w3-row-padding">
+        <div class="w3-col m12">
+          <div class="w3-card w3-round w3-white">
+            <div class="w3-container w3-padding">
+              <h6 class="w3-opacity">Share Your Stupid Thoughts!</h6>
+              <p id="post-text" contenteditable="true" class="w3-border w3-padding">Status: Feeling Like A Sentient Rock</p>
+              <button type="button" id="post-button" class="w3-button w3-theme"><i class="fa fa-pencil"></i>  Post</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- TODO Objective 9: Display Posts using posts list -->
+        <div class="w3-container w3-card w3-white w3-round w3-margin"><br>
+            {% load static %}
+            <img src="{% static 'avatar.png'  %}" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width:60px">
+            <span class="w3-right w3-opacity">TODO Add Post Timestamp</span>
+            <h4 class="post-user">TODO Add Post Username</h4><br>
+            <hr class="w3-clear">
+
+            <!-- TODO Objective 10: Add Post id and likes count -->
+                    <button type="button" class="w3-button w3-theme-d1 w3-margin-bottom like-button" id="post-0">
+                        <i class="fa fa-thumbs-up"></i>  Like</button>
+            <span class="w3-button w3-theme-d1 w3-margin-bottom">0 Likes</span>
+        </div>
+
+      <div class="w3-container">
+          <p><button id="more-button" class="w3-button w3-block w3-theme-l4">More</button></p>
+      </div>
+{% endblock %}
+
+{% block right_column %}
+    <!-- TODO Objective 7: use user_info object to render friends -->
+      <div class="w3-card w3-round w3-white w3-center">
+        <div class="w3-container">
+          <p>Friend</p>
+          {% load static %}
+          <img src="{% static 'avatar.png'  %}" alt="Avatar" style="width:50%"><br>
+          <span>TODO Add Friend</span>
+        </div>
+      </div>
+      <br>
+{% endblock %}
+
+{% block script %}
+    {% load static %}
+    <script>
+     $.ajaxSetup({
+         headers: { "X-CSRFToken": '{{csrf_token}}' }
+     });
+     like_post_url = "{% url 'social:like_view' %}";
+     post_submit_url = "{% url 'social:post_submit_view' %}";
+     more_post_url = "{% url 'social:more_post_view' %}";
+    </script>
+    <script src="{% static 'messages.js' %}"></script>
+{% endblock %}

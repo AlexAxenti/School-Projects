@@ -1,0 +1,26 @@
+{% extends 'social_base.djhtml' %}
+
+{% block title %}Account Page{% endblock %}
+
+{% block middle_column %}
+    <div class="w3-row-padding">
+        <div class="w3-col m12">
+            <div class="w3-card w3-round w3-white">
+                <div class="w3-container w3-padding">
+                    <h6 class="w3-opacity">Change Password</h6>
+                    <!--                     TODO Objective 3: Add Password Change Form -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="w3-row-padding">
+        <div class="w3-col m12">
+            <div class="w3-card w3-round w3-white">
+                <div class="w3-container w3-padding">
+                    <h6 class="w3-opacity">Update Info</h6>
+                    <!--                     TODO Objective 3: Add User Info Update Forms -->
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

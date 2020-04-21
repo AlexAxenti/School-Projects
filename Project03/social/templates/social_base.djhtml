@@ -1,0 +1,48 @@
+{% extends 'base.djhtml' %}
+
+{% block navbar_contents %}
+    <a href="{% url 'login:logout_view' %}" class="w3-bar-item w3-button w3-padding-large w3-theme-d4"><i class="fa fa-home w3-margin-right"></i>Logout</a>
+    <a href="{% url 'social:people_view' %}" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white" title="People"><i class="fa fa-male"></i></a>
+    <a href="{% url 'social:messages_view' %}" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white" title="Messages"><i class="fa fa-envelope"></i></a>
+{% endblock %}
+
+{% block navbar_small %}
+    <!-- Navbar on small screens -->
+    <div id="navDemo" class="w3-bar-block w3-theme-d2 w3-hide w3-hide-large w3-hide-medium w3-large">
+        <a href="{% url 'social:people_view' %}" class="w3-bar-item w3-button w3-padding-large">People</a>
+        <a href="{% url 'social:messages_view' %}" class="w3-bar-item w3-button w3-padding-large">Messages</a>
+        <a href="{% url 'social:account_view' %}" class="w3-bar-item w3-button w3-padding-large">Account Settings</a>
+    </div>
+{% endblock %}
+
+{% block left_column %}
+    <!-- Profile -->
+    <div class="w3-card w3-round w3-white">
+        <div class="w3-container">
+            <!--             TODO Objective 2: Add Currently Logged In Username -->
+            <h4 class="w3-center">TODO Add UserName</h4>
+            {% load static %}
+            <p class="w3-center"><img src="{% static 'avatar.png'  %}" class="w3-circle" style="height:106px;width:106px" alt="Avatar"></p>
+            <hr>
+            <!--             TODO Objective 2: Add Currently Logged In User Info -->
+            <p><i class="fa fa-pencil fa-fw w3-margin-right w3-text-theme"></i>TODO Add User Employment  </p>
+            <p><i class="fa fa-home fa-fw w3-margin-right w3-text-theme"></i> TODO Add User Location </p>
+            <p><i class="fa fa-birthday-cake fa-fw w3-margin-right w3-text-theme"></i> TODO Add User Birthday </p>
+        </div>
+    </div>
+    <br>
+
+    <!-- Interests -->
+    <div class="w3-card w3-round w3-white w3-hide-small">
+        <div class="w3-container">
+            <p>Interests</p>
+            <p>
+                <!--                 TODO Objective 2: Add Currently Logged In User Interests -->
+                <span class="w3-tag w3-small w3-theme-d5">TODO Add Interest</span>
+                <span class="w3-tag w3-small w3-theme-d5">TODO Add Interest</span>
+            </p>
+        </div>
+    </div>
+    <br>
+{% endblock %}
+

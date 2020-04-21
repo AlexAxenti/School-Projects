@@ -1,0 +1,12 @@
+body {
+    background-color: lightblue;
+}
+h1 {
+    text-align: center;
+}
+#content {
+    text-align: center;
+}
+li {
+    text-align: left;
+}
