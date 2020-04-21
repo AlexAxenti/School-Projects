@@ -20,14 +20,14 @@
     <div class="w3-card w3-round w3-white">
         <div class="w3-container">
             <!--             TODO Objective 2: Add Currently Logged In Username -->
-            <h4 class="w3-center">TODO Add UserName</h4>
+            <h4 class="w3-center">{{ user_info.user }}</h4>
             {% load static %}
             <p class="w3-center"><img src="{% static 'avatar.png'  %}" class="w3-circle" style="height:106px;width:106px" alt="Avatar"></p>
             <hr>
             <!--             TODO Objective 2: Add Currently Logged In User Info -->
-            <p><i class="fa fa-pencil fa-fw w3-margin-right w3-text-theme"></i>TODO Add User Employment  </p>
-            <p><i class="fa fa-home fa-fw w3-margin-right w3-text-theme"></i> TODO Add User Location </p>
-            <p><i class="fa fa-birthday-cake fa-fw w3-margin-right w3-text-theme"></i> TODO Add User Birthday </p>
+            <p><i class="fa fa-pencil fa-fw w3-margin-right w3-text-theme"></i> {{ user_info.employment }}  </p>
+            <p><i class="fa fa-home fa-fw w3-margin-right w3-text-theme"></i> {{ user_info.location }} </p>
+            <p><i class="fa fa-birthday-cake fa-fw w3-margin-right w3-text-theme"></i> {{ user_info.birthday }} </p>
         </div>
     </div>
     <br>
@@ -45,4 +45,3 @@
     </div>
     <br>
 {% endblock %}
-
