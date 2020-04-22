@@ -38,8 +38,11 @@
             <p>Interests</p>
             <p>
                 <!--                 TODO Objective 2: Add Currently Logged In User Interests -->
-                <span class="w3-tag w3-small w3-theme-d5">TODO Add Interest</span>
-                <span class="w3-tag w3-small w3-theme-d5">TODO Add Interest</span>
+                {% for interest in user_info.interests.all %}
+                    <span class="w3-tag w3-small w3-theme-d5">{{ interest.label }}</span>
+                {% endfor %}
+                <!--<span class="w3-tag w3-small w3-theme-d5">TODO Add Interest</span> -->
+                <!--<span class="w3-tag w3-small w3-theme-d5">TODO Add Interest</span> -->
             </p>
         </div>
     </div>
