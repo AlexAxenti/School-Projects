@@ -17,16 +17,19 @@ def messages_view(request):
       out: (HttpResponse) - if user is authenticated, will render private.djhtml
     """
     if request.user.is_authenticated:
+        #user_info = list(models.UserInfo.objects.get(user=request.user))
         user_info = models.UserInfo.objects.get(user=request.user)
 
 
         # TODO Objective 9: query for posts (HINT only return posts needed to be displayed)
-        posts = []
+        posts = list(models.Post.objects.order_by('-timestamp'))
+        post_limiter = request.session.get("post_limit",1)
+        posts_limited = posts[0:post_limiter]
 
         # TODO Objective 10: check if user has like post, attach as a new attribute to each post
 
         context = { 'user_info' : user_info
-                  , 'posts' : posts }
+                  , 'posts' : posts_limited }
         return render(request,'messages.djhtml',context)
 
     request.session['failed'] = True
@@ -157,8 +160,13 @@ def post_submit_view(request):
     postContent = request.POST.get('postContent')
     if postContent is not None:
         if request.user.is_authenticated:
-
+            current_user = models.UserInfo.objects.get(user=request.user)
+            if request.method == 'POST':
             # TODO Objective 8: Add a new entry to the Post model
+                post = models.Post(owner=current_user,content=postContent)
+                post.save()
+
+
 
             # return status='success'
             return HttpResponse()
@@ -181,7 +189,9 @@ def more_post_view(request):
         # update the # of posts dispalyed
 
         # TODO Objective 9: update how many posts are displayed/returned by messages_view
-
+        if request.method == 'POST':
+            limit = request.session.get("post_limit",1)
+            request.session["post_limit"] = limit + 2
         # return status='success'
         return HttpResponse()
 
@@ -201,7 +211,7 @@ def more_ppl_view(request):
         #request.session["people_limit"] = 1
         if request.method == 'POST':
             limit = request.session.get("people_limit",1)
-            request.session["people_limit"] = limit + 1
+            request.session["people_limit"] = limit + 2
             #request.session["people_limit"] = limit + 1
 
         # update the # of people dispalyed

@@ -3,16 +3,7 @@
    ********************************************************************************************
    */
 
-   /*function moreResponse(data,status) {
-       if (status == 'success') {
-           // reload page to display new Post
-           location.reload();
-       }
-       else {
-           alert('failed to request more posts' + status);
-       }
-   }
-
+   /*
    function submitMore(event) {
        // submit empty data
        let json_data = { };
@@ -25,8 +16,26 @@
               moreResponse);
    }*/
 
+function postResponse(data,status) {
+   if (status == 'success') {
+       // reload page to display new Post
+       location.reload();
+   }
+   else {
+       alert('failed to request more posts' + status);
+   }
+}
+
 function submitPost(event) {
-    alert('Post Button Pressed');
+    //alert('Post Button Pressed');
+    var content = document.getElementById("post-text").innerHTML;
+
+    let json_data = { 'postContent' : content };
+    let url_path = post_submit_url;
+    $.post(url_path,
+           json_data,
+           postResponse);
+    //alert('Post Button Pressed');
     // TODO Objective 8: send contents of post-text via AJAX Post to post_submit_view (reload page upon success)
 }
 
