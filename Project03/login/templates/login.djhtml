@@ -39,6 +39,9 @@ class="close" title="Close Modal">&times;</span>
     </div>
   </form>
 </div>
+{% if failed %}
+    <p style="color:red">Incorrect username or password</p>
+{% endif %}
 {% endblock %}
 
 {% block script %}

@@ -1,4 +1,5 @@
 from django.db import models
+from django import forms
 from django.contrib.auth.models import User
 
 class Interest(models.Model):
@@ -21,6 +22,12 @@ class UserInfo(models.Model):
     birthday = models.DateField(null=True,blank=True)
     interests = models.ManyToManyField(Interest)
     friends = models.ManyToManyField('self')
+
+class UserInfoForm(forms.Form):
+    employment = forms.CharField(label='employment')
+    location = forms.CharField(label='location')
+    birthday = forms.DateField(label='birthday')
+    interests = forms.CharField(label='interests')
 
 class Post(models.Model):
     owner = models.ForeignKey(UserInfo,

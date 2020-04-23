@@ -2,6 +2,29 @@
    | Handle Submitting Posts - called by $('#post-button').click(submitPost)
    ********************************************************************************************
    */
+
+   /*function moreResponse(data,status) {
+       if (status == 'success') {
+           // reload page to display new Post
+           location.reload();
+       }
+       else {
+           alert('failed to request more posts' + status);
+       }
+   }
+
+   function submitMore(event) {
+       // submit empty data
+       let json_data = { };
+       // globally defined in messages.djhtml using i{% url 'social:more_post_view' %}
+       let url_path = more_post_url;
+
+       // AJAX post
+       $.post(url_path,
+              json_data,
+              moreResponse);
+   }*/
+
 function submitPost(event) {
     alert('Post Button Pressed');
     // TODO Objective 8: send contents of post-text via AJAX Post to post_submit_view (reload page upon success)
