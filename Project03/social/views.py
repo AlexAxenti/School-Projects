@@ -133,11 +133,14 @@ def like_view(request):
     if postIDReq is not None:
         # remove 'post-' from postID and convert to int
         # TODO Objective 10: parse post id from postIDReq
-        postID = 0
+        postID = postIDReq[5:]
 
         if request.user.is_authenticated:
+            user = models.UserInfo.objects.get(user=request.user)
             # TODO Objective 10: update Post model entry to add user to likes field
-
+            post = models.Post.objects.get(id=postID)
+            post.likes.add(user)
+            post.save()
             # return status='success'
             return HttpResponse()
         else:

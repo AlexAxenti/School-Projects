@@ -25,9 +25,9 @@
             <span>{{ post.content }}</span>
             <hr class="w3-clear">
             <!-- TODO Objective 10: Add Post id and likes count -->
-                    <button type="button" class="w3-button w3-theme-d1 w3-margin-bottom like-button" id="post-0">
+                    <button type="button" class="w3-button w3-theme-d1 w3-margin-bottom like-button" id="post-{{ post.id }}">
                         <i class="fa fa-thumbs-up"></i>  Like</button>
-            <span class="w3-button w3-theme-d1 w3-margin-bottom">0 Likes</span>
+            <span class="w3-button w3-theme-d1 w3-margin-bottom">{{ post.likes.all.count }} Likes</span>
         </div>
       {% endfor %}
 
