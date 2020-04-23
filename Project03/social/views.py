@@ -140,7 +140,6 @@ def like_view(request):
             # TODO Objective 10: update Post model entry to add user to likes field
             post = models.Post.objects.get(id=postID)
             post.likes.add(user)
-            post.save()
             # return status='success'
             return HttpResponse()
         else:
