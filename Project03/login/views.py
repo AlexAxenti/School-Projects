@@ -62,6 +62,7 @@ def signup_view(request):
     -------
       out : (HttpRepsonse) - renders signup.djhtml
     """
+    # TODO Objective 1: implement signup view
     if request.method=="POST":
         form = UserCreationForm(request.POST)
         if form.is_valid():
@@ -75,7 +76,7 @@ def signup_view(request):
         form=UserCreationForm()
 
 
-    # TODO Objective 1: implement signup view
+
 
     context = { 'signup_form' : form }
 
