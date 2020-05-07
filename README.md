@@ -6,7 +6,7 @@ This project used bash programming to create various features.
 
 ## Project 02
 
-Project 02 is a personal porftfolio website.
+Project 02 is a personal portfolio website.
 
 ## Project 03
 
