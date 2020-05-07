@@ -10,4 +10,4 @@ Project 02 is a personal portfolio website.
 
 ## Project 03
 
-This project is a mini social media web app. Django was used for the creation.
+This project is a mini social media web app using Django.
